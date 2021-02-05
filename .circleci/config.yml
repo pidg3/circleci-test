@@ -8,7 +8,7 @@ jobs:
       - image: node:10.15.3
     steps:
       - checkout:
-        path: ~/test-te
+        path: ~/test-fe
       - run:
           name: Installing dependencies
           command: npm i
