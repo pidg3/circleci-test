@@ -27,7 +27,7 @@ jobs:
           profile-name: default
       - run:
           name: Upload file to S3
-          command: aws s3 sync ./test-fe/dist/ s3://test-circleci-fe --delete
+          command: aws s3 sync ./test-fe/build/ s3://test-circleci-fe --delete
 workflows:
   version: 2
   build:
