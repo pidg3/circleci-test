@@ -3,17 +3,17 @@ orbs:
   aws-cli: circleci/aws-cli@1.3.2
 jobs:
   build_project:
-    working_directory: ~/test-fe
+    working_directory: ~/circle-ci-s3-deploy
     docker:
       - image: node:10.15.3
     steps:
       - checkout
       - run:
           name: Installing dependencies
-          command: npm i
+          command: cd test-fe && npm i
       - run:
           name: Building project
-          command: npm run build
+          command: cd test-fe && npm run build
       - persist_to_workspace:
           root: .
           paths:
@@ -27,7 +27,7 @@ jobs:
           profile-name: default
       - run:
           name: Upload file to S3
-          command: aws s3 sync ./dist/ s3://test-circleci-fe --delete
+          command: aws s3 sync .test-fe/dist/ s3://test-circleci-fe --delete
 workflows:
   version: 2
   build:
