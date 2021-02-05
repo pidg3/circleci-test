@@ -3,11 +3,11 @@ orbs:
   aws-cli: circleci/aws-cli@1.3.2
 jobs:
   build_project:
-    working_directory: ~/circle-ci-s3-deploy
+    working_directory: ~/circle-ci-s3-deploy/test-fe
     docker:
       - image: node:10.15.3
     steps:
-      - checkout: ~/test-fe
+      - checkout
       - run:
           name: Installing dependencies
           command: npm i
